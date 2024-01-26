@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= blogger %>'s Blog!</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= blogger %>'s Blog!</h1>
+    <div style="display: grid; grid-template-columns: 200px 200px;
+                column-gap: 10px">
+	<form action="./list" method="get">
+	  <input type="submit" value="Return to list of bloggers" />
+	</form>
+	<form action="./logout" method="get">
+	  <input type="submit" value="Logout and return to home page" />
+	</form>
+    </div>
+    <ul>
+      <%
+      
+      for (row of rows) {
+        %>
+            <li>[<span style="font-style:italic"><%= new Date(row.timestamp*1000).toLocaleString() %></span>]<%= row.entry %></li>
+            <%
+        }
+        %>
+    </ul>
+    <% if (blogger === username) { %>
+    <form action="./new_entry" method="post">
+      <label for="entry">Enter a blog entry: </label>
+      <br />
+      <textarea id="entry" name="entry" /></textarea>
+      <br />
+      <input type="submit" value="Submit entry" />
+    </form>
+    <% } %>
+  </body>
+</html>

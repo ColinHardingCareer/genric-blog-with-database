@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Blogger Names!</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= username %>, here is the list of bloggers:</h1>
+    <ul>
+      <li><a href="./page?user=<%= encodeURIComponent(username) %>"><%= username %></a></li>
+      <% for (const blogger of rows) { 
+            
+        %>
+      <li><a href="./page?user=<%= encodeURIComponent(blogger.blogger) %>"><%= blogger.blogger %></a></li>
+      <% 
+            }%>
+    </ul>
+  </body>
+</html>
